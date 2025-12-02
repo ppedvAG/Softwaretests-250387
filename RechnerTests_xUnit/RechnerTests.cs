@@ -1,4 +1,5 @@
 ﻿using Rechner;
+using System.Collections;
 
 namespace RechnerTests_xUnit;
 
@@ -80,4 +81,23 @@ public class RechnerTests : IDisposable
 		//Assert
 		Assert.Equal(4, produkt);
 	}
+
+	[Theory]
+	[ClassData(typeof(ComplexData))]
+	public void Test(string x, TimeSpan ts)
+	{
+
+	}
+}
+
+public class ComplexData : IEnumerable<object[]>
+{
+	public readonly List<object[]> Data =
+	[
+		["1:5:25", new TimeSpan()]
+	];
+
+	public IEnumerator<object[]> GetEnumerator() => Data.GetEnumerator();
+
+	IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }
