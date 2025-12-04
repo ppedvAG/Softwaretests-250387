@@ -7,8 +7,8 @@ on:  # Trigger: Hier wird festgelegt, wann die Pipeline ausgeführt wird
   push:
     branches: [ "main" ]
     paths:
-      - M008_Bankkonto
-      - M008_BankkontoTests
+      - ./M008_Bankkonto
+      - ./M008_BankkontoTests
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:  # Aktiviert einen Button, mit dem die Pipeline per Hand ausgeführt werden kann
