@@ -32,4 +32,13 @@ jobs:  # Was in der Pipeline passieren soll
     - name: Projekt Test
       run: dotnet test ./M008_BankkontoTests/M008_BankkontoTests.csproj
 
-      
+    - name: Projekt .exe erzeugen
+      run: dotnet publish ./M008_Bankkonto/M008_Bankkonto.csproj --configuration Release --runtime win-x64 --self-contained true --property:PublishSingleFile=true --output ./publish --property:IncludeAllContentForSelfExtract=true
+
+    - name: Release erzeugen
+      uses: softprops/action-gh-release@v2
+      with:
+        name: Release 1
+        files: publish/**
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
