@@ -1,5 +1,5 @@
 
-name: Build und Test
+name: WPF Test
 
 on:  # Trigger: Hier wird festgelegt, wann die Pipeline ausgeführt wird
   workflow_dispatch:  # Aktiviert einen Button, mit dem die Pipeline per Hand ausgeführt werden kann
