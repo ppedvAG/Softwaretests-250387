@@ -9,5 +9,6 @@ internal class Program
 		int[] zahlen = [1, 2, 3, 4, 5];
 		string json = JsonConvert.SerializeObject(zahlen);
 		File.WriteAllText("Zahlen.json", json);
+
 	}
 }
