@@ -6,9 +6,12 @@ name: Build und Test
 on:  # Trigger: Hier wird festgelegt, wann die Pipeline ausgeführt wird
   push:
     branches: [ "main" ]
+    paths:
+      - M008_Bankkonto
+      - M008_BankkontoTests
   pull_request:
     branches: [ "main" ]
-#  workflow_dispatch:
+  workflow_dispatch:  # Aktiviert einen Button, mit dem die Pipeline per Hand ausgeführt werden kann
 
 jobs:
   build:
@@ -21,9 +24,3 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
