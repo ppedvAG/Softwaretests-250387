@@ -1,0 +1,27 @@
+
+name: WPF Test
+
+on:  # Trigger: Hier wird festgelegt, wann die Pipeline ausgeführt wird
+  workflow_dispatch:  # Aktiviert einen Button, mit dem die Pipeline per Hand ausgeführt werden kann
+
+jobs:  # Was in der Pipeline passieren soll
+  build:
+    runs-on: windows-2019  # Die VM auf dem der Code ausgeführt wird
+    
+    steps:
+    - name: Sourcecode holen
+      uses: actions/checkout@v4  # Ein eigenes Git-Repo, mit dem zu Ausführenden Code
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0
+
+    - name: Dependencies laden
+      run: dotnet restore ./M009_WPF/M009_WPF.csproj
+
+    - name: Projekt Build
+      run: dotnet build ./M009_WPF/M009_WPF.csproj
+      
+    - name: Projekt Test
+      run: dotnet test ./M009_WPFTests/M009_WPFTests.csproj
