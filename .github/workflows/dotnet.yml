@@ -19,9 +19,17 @@ jobs:  # Was in der Pipeline passieren soll
     
     steps:
     - name: Sourcecode holen
-      uses: actions/checkout@v4
+      uses: actions/checkout@v4  # Ein eigenes Git-Repo, mit dem zu Ausführenden Code
     
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 9.0
+
+    - name: Projekt Build
+      run: dotnet build ./M008_Bankkonto/M008_Bankkonto.csproj
+
+    - name: Projekt Test
+      run: dotnet test ./M008_BankkontoTests/M008_BankkontoTests.csproj
+
+      
