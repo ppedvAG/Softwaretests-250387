@@ -26,6 +26,9 @@ jobs:  # Was in der Pipeline passieren soll
       with:
         dotnet-version: 9.0
 
+    - name: Dependencies laden
+      run: dotnet restore ./M008_Bankkonto/M008_Bankkonto.csproj
+
     - name: Projekt Build
       run: dotnet build ./M008_Bankkonto/M008_Bankkonto.csproj
 
