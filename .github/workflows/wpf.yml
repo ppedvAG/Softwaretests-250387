@@ -6,7 +6,7 @@ on:  # Trigger: Hier wird festgelegt, wann die Pipeline ausgeführt wird
 
 jobs:  # Was in der Pipeline passieren soll
   build:
-    runs-on: windows-latest  # Die VM auf dem der Code ausgeführt wird
+    runs-on: windows-2019  # Die VM auf dem der Code ausgeführt wird
     
     steps:
     - name: Sourcecode holen
@@ -16,11 +16,6 @@ jobs:  # Was in der Pipeline passieren soll
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 9.0
-
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 4.8
 
     - name: Dependencies laden
       run: dotnet restore ./M009_WPF/M009_WPF.csproj
